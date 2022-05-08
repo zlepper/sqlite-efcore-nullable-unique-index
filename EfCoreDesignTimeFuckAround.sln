@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCoreOverwriteIndexCreation", "EfCoreOverwriteIndexCreation\EfCoreOverwriteIndexCreation.csproj", "{659165F0-3D65-486A-B977-F1F9AEC33C91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCoreOverwriteIndexCreation.Tests", "EfCoreOverwriteIndexCreation.Tests\EfCoreOverwriteIndexCreation.Tests.csproj", "{C598C6D6-1D77-403E-B4F9-71101C06973E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{659165F0-3D65-486A-B977-F1F9AEC33C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{659165F0-3D65-486A-B977-F1F9AEC33C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{659165F0-3D65-486A-B977-F1F9AEC33C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{659165F0-3D65-486A-B977-F1F9AEC33C91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C598C6D6-1D77-403E-B4F9-71101C06973E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C598C6D6-1D77-403E-B4F9-71101C06973E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C598C6D6-1D77-403E-B4F9-71101C06973E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C598C6D6-1D77-403E-B4F9-71101C06973E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
