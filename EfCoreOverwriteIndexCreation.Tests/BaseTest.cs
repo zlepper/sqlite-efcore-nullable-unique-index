@@ -112,4 +112,73 @@ public abstract class BaseTest
             // expected
         }
     }
+    
+    [Test]
+    public async Task NoErrorOnNonConflictingRoot()
+    {
+        await using var serviceProvider = CreateServiceProvider();
+
+        await CreateBasicTree(serviceProvider);
+        
+        await using var scope = serviceProvider.CreateAsyncScope();
+
+        var ctx = scope.ServiceProvider.GetRequiredService<MyContext>();
+        
+        var conflictingRoot = new TreeNode()
+        {
+            Name = "root2",
+            ParentId = null
+        };
+        
+        ctx.TreeNodes.Add(conflictingRoot);
+        await ctx.SaveChangesAsync();
+    }
+    
+    
+
+    [Test]
+    public async Task NoErrorOnNonConflictingSibling()
+    {
+        await using var serviceProvider = CreateServiceProvider();
+
+        var (root, child) = await CreateBasicTree(serviceProvider);
+        
+        await using var scope = serviceProvider.CreateAsyncScope();
+
+        var ctx = scope.ServiceProvider.GetRequiredService<MyContext>();
+        var sibling = new TreeNode()
+        {
+            Name = "sibling",
+            ParentId = root.Id
+        };
+        
+        ctx.TreeNodes.Add(sibling);
+        await ctx.SaveChangesAsync();
+    }
+    
+    [Test]
+    public async Task NoErrorOnSameNameInDifferentParent()
+    {
+        await using var serviceProvider = CreateServiceProvider();
+
+        var (root, child) = await CreateBasicTree(serviceProvider);
+        
+        await using var scope = serviceProvider.CreateAsyncScope();
+
+        var ctx = scope.ServiceProvider.GetRequiredService<MyContext>();
+        var anotherRoot = new TreeNode()
+        {
+            Name = "Another root"
+        };
+        var anotherChild = new TreeNode()
+        {
+            Name = child.Name,
+            Parent = anotherRoot
+        };
+        
+        
+        ctx.TreeNodes.AddRange(anotherRoot, anotherChild);
+        await ctx.SaveChangesAsync();
+    }
+
 }
